@@ -15,8 +15,8 @@
 |
 */
 #$config['base_url']	= 'http://localhost:8080/quiz/';
-#$config['base_url']	= 'http://thiagoduarte.xyz/quiz/';
-$config['base_url']	= 'http://avaliacao.othiagoduarte.koding.io/quiz/';
+$config['base_url']	= 'http://thiagoduarte.xyz/quiz/';
+#$config['base_url']	= 'http://avaliacao.othiagoduarte.koding.io/quiz/';
 
 /*
 |--------------------------------------------------------------------------
