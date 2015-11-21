@@ -46,12 +46,14 @@
 */
 
 $active_group = 'default';
+#$active_group = 'hostinger';
+
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = 'root';
-$db['default']['database'] = '';
+$db['default']['database'] = 'quiz';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
@@ -63,6 +65,23 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
+
+$db['hostinger']['hostname'] = 'localhost';
+$db['hostinger']['username'] = 'root';
+$db['hostinger']['password'] = 'root10';
+$db['hostinger']['database'] = 'u568532118_quiz';
+$db['hostinger']['dbdriver'] = 'mysql';
+$db['hostinger']['dbprefix'] = '';
+$db['hostinger']['pconnect'] = TRUE;
+$db['hostinger']['db_debug'] = TRUE;
+$db['hostinger']['cache_on'] = FALSE;
+$db['hostinger']['cachedir'] = '';
+$db['hostinger']['char_set'] = 'utf8';
+$db['hostinger']['dbcollat'] = 'utf8_general_ci';
+$db['hostinger']['swap_pre'] = '';
+$db['hostinger']['autoinit'] = TRUE;
+$db['hostinger']['stricton'] = FALSE;
+
 
 
 /* End of file database.php */

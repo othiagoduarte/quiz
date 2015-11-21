@@ -29,14 +29,6 @@ class Usuario extends CI_Model {
 	function GetUsuarios(){
 			
 		$usuarios = array();
-		$usuariosJson = $this->arquivo->lerArquivo();
-		
-		if ( Count($usuariosJson) > 0 )
-		{
-			foreach ($usuariosJson as $json) {
-				$usuarios[] = json_decode($json);
-			}			
-		}		
 				
 		return $usuarios;
 	}
@@ -73,40 +65,30 @@ class Usuario extends CI_Model {
 	}
 		
 	public function insert()
-	{		
-		$this->id = count($this->GetUsuarios()) + 1;
-		$json = json_encode($this);
-		$this->arquivo->insert($json);
+	{	
+		$this->ConectarDB();
+		$this->db->insert('usuarios',$this);		
 	}	
 	public function update()
 	{
-		$usuarios =  $this->GetUsuarios();
-		$usuariosJson = array();
-			
-		foreach ($usuarios as $usuario)
-		{
-			if ($usuario->id == $this->id) {
-				$usuario = $this;
-			}
-			
-			$usuariosJson[]	= json_encode($usuario);
-		}
-		$this->arquivo->update($usuariosJson);
+		$this->ConectarDB();
+		$this->db->update('usuarios', $this, array('id' => $_POST['id']));
 	}
 	public function delete()
 	{
-		$usuarios =  $this->GetUsuarios();
-		$usuariosJson = array();
 		
-		foreach ($usuarios as $usuario)
-		{		
-			if ($usuario->id != $this->id) {
-				$usuario->id = Count($usuariosJson) + 1;
-				$usuariosJson[]	= json_encode($usuario);
-			}		
-		}
-		
-		$this->arquivo->update($usuariosJson);
+	}
+	public function BeginTrans(){
+		$this->db->trans_start();	
+	}
+	public function Rollback(){
+		$this->db->trans_off();	
+	}
+	public function commit(){
+		$this->db->trans_complete();
+	}
+	public function ConectarDB(){
+		return $this->load->database();
 	}
 	function logar(){
 		
