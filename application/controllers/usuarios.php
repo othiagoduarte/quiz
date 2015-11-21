@@ -6,9 +6,9 @@ class Usuarios extends CI_Controller {
 	function __construct()
 	{	
 		parent::__construct();
-		$this->load->model('Usuario','usuario');
-		$this->load->model('Cidade','cidade');
-		$this->load->model('Uf','uf');
+		$this->load->model('usuario','usuario');
+		$this->load->model('cidade','cidade');
+		$this->load->model('uf','uf');
 		$this->load->helper('url');		
 	}
 
