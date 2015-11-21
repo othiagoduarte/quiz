@@ -1,0 +1,1 @@
+{"id":"1","nome":"Thiago Duarte","senha":"root","usuario":"admin","email":"thiago-duarte@outlook.com","rg":"123456789","cpf":"123456789","mae":"Maria","endereco":"Rua arroio Feijo,1039","estado":"1;","cidade":"1","telefone":"51 8920-1771","pai":"Jo\u00e3o","comentario":"Usu\u00e1rio geral"}

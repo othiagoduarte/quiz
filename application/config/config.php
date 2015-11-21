@@ -16,7 +16,7 @@
 */
 #$config['base_url']	= 'http://localhost:8080/quiz/';
 #$config['base_url']	= 'http://thiagoduarte.xyz/quiz/';
-$config['base_url']	= 'http://avaliacao.othiagoduarte.koding.io/quiz/';
+$config['base_url']	= 'http://othiagoduarte.koding.io/quiz/';
 
 /*
 |--------------------------------------------------------------------------
@@ -182,7 +182,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 3;
 
 /*
 |--------------------------------------------------------------------------

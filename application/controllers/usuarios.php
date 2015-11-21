@@ -27,7 +27,7 @@ class Usuarios extends CI_Controller {
 			 
 		if ( ! $logado )
 		{
-			header("Location: /avaliacao/login");
+			header("Location: ".base_url('login'))	;
 		}	
 		
 		$data = array();		
