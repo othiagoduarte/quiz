@@ -6,7 +6,7 @@ class Login extends CI_Controller {
 	function __construct()
 	{	
 		parent::__construct();
-		$this->load->model('Usuario','usuario');
+		$this->load->model('usuario','usuario');
 	}
 	
 	function index()
@@ -14,6 +14,7 @@ class Login extends CI_Controller {
 		session_start();
 		
 		$data = array();
+		
 		$data['title'] = 'Login';	
 		$this->load->view('includes/header',$data);
 		$this->load->view('login');	
@@ -25,7 +26,6 @@ class Login extends CI_Controller {
 		$this->usuario->senha = $this->input->post('senha');
 
 		if ($this->usuario->logar()) {
-			$_SESSION['logado'] ==TRUE;
 			header("Location: ".base_url())	;
 		}else {
 			header("Location: ".base_url('login?err'))	;

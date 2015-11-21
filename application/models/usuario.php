@@ -20,84 +20,92 @@ class Usuario extends CI_Model {
 	public $comentario = "";
   	
 	public function __construct(){
-	   	parent::__construct();
-	   		
-		$this->load->helper('url');
-		$this->load->helper('file');
-		$this->load->library('arquivo','arquivo');	
+	   	parent::__construct();	
 	}
-	function GetUsuarios(){
-			
-		$usuarios = array();
-				
-		return $usuarios;
-	}
-	public function lasId()
-	{
-		return Count($this->GetUsuarios());
-	}	    
-	public function getbyId($id)	{
-		
-		$usuarios =  $this->GetUsuarios();
-		
-		foreach ($usuarios as $usuario) 
-		{
-			if ($usuario->id == $id ) 
-			{
-				return $usuario;
-			}
-		}
-		return new Usuario(); 
-	}
-	public function getbyUsuario($nomeUsuario)	{
-		
-		$usuarios =  $this->GetUsuarios();
 	
-		foreach ($usuarios as $usuario) 
-		{
-			if ($usuario->usuario == $nomeUsuario ) 
-			{
-				var_dump($usuario);
-				return $usuario;
-			}
-		}
-		return new Usuario(); 
-	}
+	public function logar(){
 		
-	public function insert()
-	{	
-		$this->ConectarDB();
-		$this->db->insert('usuarios',$this);		
-	}	
-	public function update()
-	{
-		$this->ConectarDB();
-		$this->db->update('usuarios', $this, array('id' => $_POST['id']));
-	}
-	public function delete()
-	{
+		$this->conectarDB();
 		
-	}
-	public function BeginTrans(){
-		$this->db->trans_start();	
-	}
-	public function Rollback(){
-		$this->db->trans_off();	
-	}
-	public function commit(){
-		$this->db->trans_complete();
-	}
-	public function ConectarDB(){
-		return $this->load->database();
-	}
-	function logar(){
-		
-		if (count($this->GetUsuarios()) > 0) {
-			$usuario = $this->getbyUsuario($this->usuario);
+		if ($this->db->count_all_results($this->get_table()) > 0) {
+			
+			$usuario = $this->get_by_usuario($this->usuario);
 			return $usuario->usuario == $this->usuario && $usuario->senha == $this->senha;
 		}
 		else{
 			return $this->usuario === 'admin' && $this->senha === 'admin' ;		
-		}		
+		}	
 	}
+	public function get_table(){
+		return 'usuarios';																			#definir o nome da table onde os dados serão salvos
+	}
+	
+	public function get_all($lmt = 0){
+		
+		$this->conectarDB();	
+		$this->db->order_by('nome','asc'); 
+		
+		if ($lmt > 0) {
+			$this->db->limit($lmt);
+		}	
+		
+		return $this->db->get($this->get_table())->result();
+	} 
+	   
+	public function get_by_id($id)	{
+		
+		$this->conectarDB();
+		$result = $this->db->get_where( $this->get_table() , array('id' => $id) )->result();
+		
+		if (count($result) > 0 ) {
+			return $result[0];
+		}else {
+			return new Usuario();
+		}				
+	}
+	
+	public function get_by_usuario($nomeUsuario)	{
+		
+		$usuarios =  $this->get_all();
+	
+		foreach ($usuarios as $usuario) 
+		{
+			if ($usuario->usuario == $nomeUsuario ) 
+			{				
+				return $usuario;
+			}
+		}
+		return new Usuario(); 
+	}
+		
+	public function insert(){	
+		$this->conectarDB();
+		$this->db->insert($this->get_table(),$this);		
+	}	
+	
+	public function update(){
+		$this->conectarDB();
+		$this->db->update($this->get_table(), $this, array('id' => $this->id ) );
+	}
+	
+	public function delete(){		
+		$this->conectarDB();
+		$this->db->delete($this->get_table(), array('id' => $this->id)); 
+	}
+	
+	public function beginTrans(){
+		$this->db->trans_start();	
+	}
+	
+	public function rollback(){
+		$this->db->trans_off();	
+	}
+	
+	public function commit(){
+		$this->db->trans_complete();
+	}
+	
+	public function conectarDB(){
+		return $this->load->database();
+	}	
 }

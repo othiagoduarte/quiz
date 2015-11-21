@@ -1,8 +1,7 @@
 <?php  
-if(! isset($usuario))
-{
+if(! isset($usuario)){
   $usuario = new Usuario(); 
-}  
+}
 ?>
 <h5>Dados de acesso</h5>
 <div class="row">

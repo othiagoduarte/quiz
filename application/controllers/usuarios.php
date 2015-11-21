@@ -8,8 +8,7 @@ class Usuarios extends CI_Controller {
 		parent::__construct();
 		$this->load->model('usuario','usuario');
 		$this->load->model('cidade','cidade');
-		$this->load->model('uf','uf');
-		$this->load->helper('url');		
+		$this->load->model('uf','uf');	
 	}
 
 	public function index()
@@ -32,9 +31,9 @@ class Usuarios extends CI_Controller {
 		
 		$data = array();		
 		$data['title'] = 'Bem vindo';
-		$usuario = new Usuario();
-		$data['usuario'] = $usuario;
-		$data['lista_usuarios'] = $this->usuario->GetUsuarios();
+		
+		$data['usuario'] = new Usuario();
+		$data['lista_usuarios'] = $this->usuario->get_all();
 		$data['lista_cidades'] = $this->cidade->GetCidades();
 		$data['lista_Estados'] = $this->uf->GetUfs();
 
@@ -49,7 +48,7 @@ class Usuarios extends CI_Controller {
 		$id = $this->input->get('id');
 		$data = array();
 		$data['title'] = 'Editar';		
-		$data['usuario'] = $this->usuario->getbyId($id);
+		$data['usuario'] = $this->usuario->get_by_id($id);
 		$data['lista_cidades'] = $this->cidade->GetCidades();
 		$data['lista_Estados'] = $this->uf->GetUfs();			
 		
@@ -95,10 +94,11 @@ class Usuarios extends CI_Controller {
 	public function excluir()
 	{
 		$id = $this->input->get('id');
-		
+		$model = new Usuario();
+		$model = $this->usuario->get_by_id($id);
 		$data = array();
 		$data['title'] = 'Deletar';
-		$data['usuario'] =$this->usuario->getbyId($id);
+		$data['usuario'] = $model;
 		$data['lista_cidades'] = $this->cidade->GetCidades();
 		$data['lista_Estados'] = $this->uf->GetUfs();			
 		
@@ -129,7 +129,7 @@ class Usuarios extends CI_Controller {
 		
 		$data = array();
 		$data['title'] = 'Visualizar';
-		$data['usuario'] =$this->usuario->getbyId($id);
+		$data['usuario'] = $this->usuario->get_by_id($id);
 		$data['lista_cidades'] = $this->cidade->GetCidades();
 		$data['lista_Estados'] = $this->uf->GetUfs();			
 		
@@ -231,5 +231,13 @@ class Usuarios extends CI_Controller {
 		}				
 		return "SUCESSO";
 		 	
+	}
+	function teste(){
+		
+		//get by id
+		//var_dump( $this->usuario->get_by_id(999));
+		
+		//get all
+		//var_dump ( $this->usuario->get_all() );
 	}	
 }
