@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid conteudo">
   <div class="row s12">
     <form class="col s12" action="<?php echo base_url('usuarios/do_cadastrar')?>" method="POST" >
       <?php include "detalhe.php"?>

@@ -239,5 +239,11 @@ class Usuarios extends CI_Controller {
 		
 		//get all
 		//var_dump ( $this->usuario->get_all() );
+		
+		$data = array();
+		$data['title'] = 'Editar';
+			
+		$this->load->view('includes/header',$data);
+		$this->load->view('teste');
 	}	
 }
