@@ -7,7 +7,7 @@
     </ul>
     <ul id="nav-mobile" class="side-nav">
        <li><a href="<?php echo base_url('usuarios')?>">Usuarios</a></li>
-      <li><a href="<?php echo base_url('Perguntas')?>">Perguntas</a></li>
+      <li><a href="<?php echo base_url('perguntas')?>">Perguntas</a></li>
       <li><a href="<?php echo base_url('login')?>">Sair</a></li>   
     </ul>
     <a href="home" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
