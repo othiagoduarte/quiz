@@ -20,8 +20,9 @@ class Perguntas extends CI_Controller {
 		$data['title'] = 'Editar';
 		$data['lista_perguntas'] = $this->get_lista_perguntas( $this->pergunta->get_all() );
 		$this->load->view('includes/header',$data);
-		$this->load->view('includes/menu_perguntas');
+		$this->load->view('includes/menu');
 		$this->load->view('perguntas/listar');
+		$this->load->view('includes/footer');	
 	}
 	
 	public function detalhes($id){
@@ -29,8 +30,9 @@ class Perguntas extends CI_Controller {
 		$data = $this->carregar_pergunta_respostas($id);
 		$data['title'] = 'Detalhes';
 		$this->load->view('includes/header',$data);
-		$this->load->view('includes/menu_perguntas');
+		$this->load->view('includes/menu');
 		$this->load->view('perguntas/visualizar');
+		$this->load->view('includes/footer');	
 	}
 		
 	public function inserir(){
@@ -40,8 +42,9 @@ class Perguntas extends CI_Controller {
 		$data['lista_nivel'] = $this->nivel->get_all() ;
 		
 		$this->load->view('includes/header',$data);
-		$this->load->view('includes/menu_perguntas');
+		$this->load->view('includes/menu');
 		$this->load->view('perguntas/inserir');
+		$this->load->view('includes/footer');	
 		
 	} 
 		
@@ -50,8 +53,9 @@ class Perguntas extends CI_Controller {
 		$data = $this->carregar_pergunta_respostas($id);
 		$data['title'] = 'Excluir';
 		$this->load->view('includes/header',$data);
-		$this->load->view('includes/menu_perguntas');
+		$this->load->view('includes/menu');
 		$this->load->view('perguntas/excluir');
+		$this->load->view('includes/footer');	
 	}
 	
 	public function editar($id){
@@ -59,8 +63,9 @@ class Perguntas extends CI_Controller {
 		$data = $this->carregar_pergunta_respostas($id);
 		$data['title'] = 'Editar';
 		$this->load->view('includes/header',$data);
-		$this->load->view('includes/menu_perguntas');
+		$this->load->view('includes/menu');
 		$this->load->view('perguntas/editar');
+		$this->load->view('includes/footer');		
 	}
 			
 	public function do_editar(){
@@ -84,6 +89,7 @@ class Perguntas extends CI_Controller {
 		$resposta_3->update();
 		$resposta_4->update();
 		
+		header("Location: ".base_url())	;
 	}
 		
 	public function do_inserir(){
@@ -117,6 +123,7 @@ class Perguntas extends CI_Controller {
 		$resposta_3->Insert();
 		$resposta_4->Insert();
 		
+		header("Location: ".base_url())	;
 	}
 	
 	public function do_excluir(){
@@ -133,6 +140,8 @@ class Perguntas extends CI_Controller {
 		$resposta_3->delete();
 		$resposta_4->delete();
 		$pergunta->delete();		
+		
+		header("Location: ".base_url())	;
 	}
 	
 	public function carregar_pergunta_respostas($id_pergunta){

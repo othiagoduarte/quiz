@@ -14,14 +14,14 @@
 					<td> <?php echo $item['nivel'] ?></td>
 					<td> <?php echo $item['assunto'] ?></td>
 					<td> <?php echo $item['trecho'] ?></td>
-					<td> <a class="btn-floating btn-small blue" href="<?php echo base_url('perguntas/detalhes/')."/".$item['id'] ?>" ><i  class="material-icons">toc</i></a></td>
-					<td> <a class="btn-floating btn-small blue" href="<?php echo base_url('perguntas/editar')."/".$item['id'] ?>"  ><i  class="material-icons">mode_edit</i></a></td>
-					<td> <a class="btn-floating btn-small red" href="<?php echo base_url('perguntas/excluir/')."/".$item['id'] ?>" ><i  class="material-icons">delete</i></a></td>					
+					<td> <a class="btn-floating btn-small teal" href="<?php echo base_url('perguntas/detalhes/')."/".$item['id'] ?>" ><i  class="material-icons">toc</i></a></td>
+					<td> <a class="btn-floating btn-small teal" href="<?php echo base_url('perguntas/editar')."/".$item['id'] ?>"  ><i  class="material-icons">mode_edit</i></a></td>
+					<td> <a class="btn-floating btn-small purple" href="<?php echo base_url('perguntas/excluir/')."/".$item['id'] ?>" ><i  class="material-icons">delete</i></a></td>					
 				</tr>
 		<?php endforeach; ?>
 	</table>
 	<div class="fixed-action-btn " style="bottom: 45px; right: 24px;">
-		<a class="btn-floating btn-large blue" href="<?php echo base_url('perguntas/inserir') ?>">
+		<a class="btn-floating btn-large purple" href="<?php echo base_url('perguntas/inserir') ?>">
 			<i class="large material-icons">add</i>
 		</a>
 	</div>

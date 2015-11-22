@@ -3,8 +3,8 @@ if(! isset($usuario)){
   $usuario = new Usuario(); 
 }
 ?>
+<div class="row formulario">
 <h5>Dados de acesso</h5>
-<div class="row">
   <div class="input-field col s4">
     <input  id="fone" type="hidden" class="validate" name="id" value = "<?php echo $usuario->id ?>"  >
     <input  id="fone" type="text" class="validate" name="usuario" value = "<?php echo  $usuario->usuario ?>" required >
@@ -59,7 +59,7 @@ if(! isset($usuario)){
   </div>
   <div class="col s3 ">
     <label>Cidade</label>
-          <select class="browser-default" name="cidade"> 
+          <select name="cidade"> 
             <option value="0" disabled <?php echo ( 0 == $usuario->cidade) ? "selected" : "" ;  ?> >Selecione</option>
               <?php foreach ($lista_cidades as $cidade) : ?>
                 <option value= "<?php  echo  	$cidade['id'] ?>";  
@@ -70,7 +70,7 @@ if(! isset($usuario)){
     </div>
       <div class="col s3 ">
       <label>Estado</label>
-          <select class="browser-default" name="estado"> 
+          <select  name="estado"> 
             <option value="0" disabled <?php echo ( 0 == $usuario->cidade) ? "selected" : "" ; ?> >Selecione</option>
               <?php foreach ($lista_Estados as $estado) : ?>
                 <option value= <?php  echo  	$estado['id']?>; 

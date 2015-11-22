@@ -10,10 +10,10 @@
         <?php include "detalhe.php"?>
             <div class="input-field">
               <div class="col s3">
-                <button class="btn waves-effect waves-light " type="submit" >Salvar
+                <button class="btn waves-effect purple waves-light " type="submit" >Salvar
                   <i class="material-icons"></i>
                 </button>
-                <a class="btn waves-effect waves-light " href="<?php echo base_url('usuarios')?>">Cancelar
+                <a class="btn waves-effect waves-light purple" href="<?php echo base_url('usuarios')?>">Cancelar
                   <i class="material-icons"></i>
                 </a>
               </div>

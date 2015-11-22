@@ -10,14 +10,14 @@
 		<?php foreach ($lista_usuarios as $iten) : ?>
 				<tr>
 					<td> <?php echo $iten->nome ?></td>
-					<td> <a class="btn-floating btn-small orange" href="<?php echo base_url('usuarios/detalhe?id=').$iten->id ?>" ><i  class="material-icons">toc</i></a></td>
-					<td> <a class="btn-floating btn-small blue" href="<?php echo base_url('usuarios/editar?id=').$iten->id ?>"  ><i  class="material-icons">mode_edit</i></a></td>
-					<td> <a class="btn-floating btn-small red" href="<?php echo base_url('usuarios/excluir?id=').$iten->id ?>" ><i  class="material-icons">delete</i></a></td>					
+					<td> <a class="btn-floating btn-small teal" href="<?php echo base_url('usuarios/detalhe?id=').$iten->id ?>" ><i  class="material-icons">toc</i></a></td>
+					<td> <a class="btn-floating btn-small teal" href="<?php echo base_url('usuarios/editar?id=').$iten->id ?>"  ><i  class="material-icons">mode_edit</i></a></td>
+					<td> <a class="btn-floating btn-small purple" href="<?php echo base_url('usuarios/excluir?id=').$iten->id ?>" ><i  class="material-icons">delete</i></a></td>					
 				</tr>
 		<?php endforeach; ?>
 	</table>
 	<div class="fixed-action-btn modal-trigger  " style="bottom: 45px; right: 24px;">
-		<a class="btn-floating btn-large">
+		<a class="btn-floating btn-large purple">
 			<i class="large material-icons" id="btnCadastrar">add</i>
 		</a>
 	</div>
