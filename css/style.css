@@ -26,21 +26,21 @@
 
 @media (min-width: 601px) {
 
-.percentMarginLeft13
-{
-	margin-left:13% !important;
-}
-
-.percentMarginLeft24
-{
-	margin-left:24% !important;
-}
-
-
-.rightParcial
-{
-	float:right;
-}
+    .percentMarginLeft13
+    {
+    	margin-left:13% !important;
+    }
+    
+    .percentMarginLeft24
+    {
+    	margin-left:24% !important;
+    }
+    
+    
+    .rightParcial
+    {
+    	float:right;
+    }
 
 }
 .height40

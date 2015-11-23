@@ -89,7 +89,7 @@ class Perguntas extends CI_Controller {
 		$resposta_3->update();
 		$resposta_4->update();
 		
-		header("Location: ".base_url())	;
+		header("Location: ".base_url('perguntas'))	;
 	}
 		
 	public function do_inserir(){
@@ -123,7 +123,7 @@ class Perguntas extends CI_Controller {
 		$resposta_3->Insert();
 		$resposta_4->Insert();
 		
-		header("Location: ".base_url())	;
+		header("Location: ".base_url('perguntas'))	;
 	}
 	
 	public function do_excluir(){
@@ -141,7 +141,7 @@ class Perguntas extends CI_Controller {
 		$resposta_4->delete();
 		$pergunta->delete();		
 		
-		header("Location: ".base_url())	;
+		header("Location: ".base_url('perguntas'))	;
 	}
 	
 	public function carregar_pergunta_respostas($id_pergunta){

@@ -18,7 +18,12 @@ class Teste extends CI_Controller {
 
 	public function index()
 	{
-		echo "teste";
+		$data = array();
+		$data['title'] = 'Editar';
+		$this->load->view('includes/header',$data);
+		$this->load->view('includes/menu');
+		$this->load->view('teste');
+		
 	}
 	public function nivel(){
 		
