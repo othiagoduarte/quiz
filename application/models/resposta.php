@@ -49,6 +49,12 @@ class Resposta extends CI_Model {
 		$this->db->where( 'id !=' ,$id_reposta);
 		return $this->db->get_where( $this->get_table() , array('id_pergunta' => $id_pergunta) )->result();			
 	}
+	public function get_respostas_aleatorio($id_pergunta)	{
+		
+		$this->conectarDB();
+		$this->db->order_by('rand()');
+		return $this->db->get_where( $this->get_table() , array('id_pergunta' => $id_pergunta) )->result();			
+	}
 			
 	public function insert(){	
 		$this->conectarDB();

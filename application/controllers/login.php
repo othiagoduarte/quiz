@@ -27,7 +27,7 @@ class Login extends CI_Controller {
 		if ($this->usuario->logar()) {
 		    $data = array();
 		    $data['logado'] = True;
-		    $data['usuario-logado'] = $this->usuario;
+		    $data['usuario_logado'] = $this->usuario;
 		    
 		    $this->session->set_userdata($data);
 			header("Location: ".base_url())	;
