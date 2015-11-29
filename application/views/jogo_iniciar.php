@@ -5,7 +5,13 @@
                   <div class="card teal darken-1">
                     <div class="card-content white-text">
                       <span class="card-title">Bem vindo <?php echo $nome_usuario ?> </span>
-                      <p> </p>
+                      <div class="row ">
+                      <p> Quando estiver pronto click em começar !!!</p>
+                      <p> Boa sorte</p>
+                      </div>
+                       <div class="row ">
+                       <a class=" center waves-effect waves-light btn purple center" href="<?php echo base_url('jogar/pergunta/19');?>">Começar</a>
+                        </div>
                     </div>
                   </div>
                 </div>
