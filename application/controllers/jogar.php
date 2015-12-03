@@ -10,7 +10,7 @@ class Jogar extends CI_Controller {
 	    parent::__construct();
 		$this->load->library('session');
 		
-		$this->load->model('usuario');
+		$this->load->model('usuario','usuario');
 		$this->load->model('jogo','jogo');
 		$this->load->model('pergunta');
 		$this->load->model('resposta');
@@ -60,10 +60,40 @@ class Jogar extends CI_Controller {
 	}
 	public function responder(){
 
-	  $proxima_sequencia = $this->input->post('id_sequencia');
-	  $proxima_sequencia = $proxima_sequencia + 1; 
-	  redirect('jogar/pergunta/'.$proxima_sequencia); 
+        var_dump($this->input->post());
+	    $this->jogo_pergunta->id_pergunta = $this->input->post('id_pergunta') ;
+	    $this->jogo_pergunta->id_jogo = $this->input->post('id_jogo') ;
+	    $this->jogo_pergunta->id_resposta = $this->input->post('id_resposta') ;
+	    
+	    $this->jogo_pergunta->responder();
 	
+	    $proxima_sequencia = $this->input->post('id_sequencia');
+	   
+	    if ($proxima_sequencia == 10) {
+	       redirect('jogar/pontos/'.$this->jogo_pergunta->id_jogo); 
+	    }
+	   
+	    $proxima_sequencia = $proxima_sequencia + 1; 
+	   
+	    redirect('jogar/pergunta/'.$proxima_sequencia); 
+	    
+	}
+	
+	public function ranking(){
+	    
+	    $data = array();
+		$data['title'] = 'Quiz - ranking';
+		$data['lista_usuarios'] = $this->usuario->get_all();
+		$this->load->view('includes/header',$data);
+		$this->load->view('includes/menu_jogo');
+		$this->load->view('jogo_usuarios');
+		$this->load->view('includes/footer');
+	
+	}
+	
+	public function pontos($id){
+	    
+	    $this->jogo_pergunta->db->get()->result();
 	    
 	}
     

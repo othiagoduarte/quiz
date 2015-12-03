@@ -18,7 +18,12 @@ class Jogo_pergunta extends CI_Model {
 
 	}
 	
+    public function responder(){
 
+       $sql =  "update jogos_resposta set id_resposta = $this->id_resposta where id_jogo = $this->id_jogo and id_pergunta = $this->id_pergunta";
+       $this->conectarDB();
+       $this->db->query($sql);	
+    }
 	
 	public function get_table(){
 		return $nome_tabela;																			#definir o nome da table onde os dados serão salvos
