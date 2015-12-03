@@ -18,7 +18,8 @@ class Usuario extends CI_Model {
 	public $telefone = ""; 
 	public $pai = "";
 	public $comentario = "";
-  	
+	
+	
 	public function __construct(){
 	   	parent::__construct();	
 	}
@@ -26,18 +27,22 @@ class Usuario extends CI_Model {
 	public function logar(){
 		
 		$this->conectarDB();
-		
+	
 		if ($this->db->count_all_results($this->get_table()) > 0) {
 			
 			$usuario = $this->get_by_usuario($this->usuario);
+		    $this->id = $usuario->id;
+		    $this->nome = $usuario->nome;
+		    
 			return $usuario->usuario == $this->usuario && $usuario->senha == $this->senha;
 		}
 		else{
+		    
 			return $this->usuario === 'admin' && $this->senha === 'admin' ;		
 		}	
 	}
 	public function get_table(){
-		return 'usuarios';																			#definir o nome da table onde os dados serão salvos
+		return "usuarios";																			
 	}
 	
 	public function get_all($lmt = 0){

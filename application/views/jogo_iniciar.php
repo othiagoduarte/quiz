@@ -10,7 +10,7 @@
                       <p> Boa sorte</p>
                       </div>
                        <div class="row ">
-                       <a class=" center waves-effect waves-light btn purple center" href="<?php echo base_url('jogar/pergunta/19');?>">Começar</a>
+                       <a class=" center waves-effect waves-light btn purple center" href="<?php echo base_url('jogar/pergunta/1');?>">Começar</a>
                         </div>
                     </div>
                   </div>

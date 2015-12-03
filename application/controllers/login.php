@@ -27,14 +27,14 @@ class Login extends CI_Controller {
 		if ($this->usuario->logar()) {
 		    $data = array();
 		    $data['logado'] = True;
-		    $data['usuario_logado'] = $this->usuario;
+		    $data['usuario_logado'] =  $this->usuario->get_by_id($this->usuario->id);
 		    
 		    $this->session->set_userdata($data);
 			header("Location: ".base_url())	;
 		}else {
 			header("Location: ".base_url('login?err'))	;
 		}
-			
+
 	}
 	
 	public function sair(){

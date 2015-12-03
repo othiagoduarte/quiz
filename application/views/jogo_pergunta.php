@@ -10,8 +10,8 @@
         <li class="<?php echo $sequencia == 6?'active purple': 'waves-effect'; ?>"><a href="<?php echo base_url('jogar/pergunta/6')?>">6</a></li>
         <li class="<?php echo $sequencia == 7?'active purple': 'waves-effect'; ?>"><a href="<?php echo base_url('jogar/pergunta/7')?>">7</a></li>
         <li class="<?php echo $sequencia == 8?'active purple': 'waves-effect'; ?>"><a href="<?php echo base_url('jogar/pergunta/8')?>">8</a></li>
-        <li class="<?php echo $sequencia == 19?'active purple': 'waves-effect'; ?>"><a href="<?php echo base_url('jogar/pergunta/19')?>">9</a></li>
-        <li class="<?php echo $sequencia == 20?'active purple': 'waves-effect'; ?>"><a href="<?php echo base_url('jogar/pergunta/20')?>">10</a></li>
+        <li class="<?php echo $sequencia == 9?'active purple': 'waves-effect'; ?>"><a href="<?php echo base_url('jogar/pergunta/9')?>">9</a></li>
+        <li class="<?php echo $sequencia == 10?'active purple': 'waves-effect'; ?>"><a href="<?php echo base_url('jogar/pergunta/10')?>">10</a></li>
         <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
       </ul>
     </div>  
@@ -21,8 +21,10 @@
                 <div class="col s12 m6">
                   <div class="card teal darken-1">
                     <div class="card-content white-text">
-                      <span class="card-title">Questão - <?php echo  $pergunta->id.' - '.$pergunta->assunto; ?> </span>
+                      <span class="card-title">Questão - <?php echo $sequencia.' - '.$pergunta->assunto; ?> </span>
+                      <hr>
                       <p> <?php echo $pergunta->descricao; ?></p>
+                      
                     </div>
                   </div>
                 </div>
@@ -32,8 +34,9 @@
         <form action="<?php echo base_url('jogar/responder') ?>"  method="post">
             <p>
               <input  id="id_pergunta" type="hidden" class="validate" name="id_pergunta" value = "<?php echo $pergunta->id ?>"  >
+              <input  id="id_jogo" type="hidden" class="validate" name="id_jogo" value = "<?php echo $jogo->id ?>"  >
               <input  id="id_sequencia" type="hidden" class="validate" name="id_sequencia" value = "<?php echo $sequencia ?>"  >
-              <input name="id_resposta" type="radio" id="resposta_1" required value="<?php echo $respostas[0]->id?>" />
+              <input name="id_resposta" type="radio" id="resposta_1" required value="<?php echo $respostas[0]->id; echo $respostas[0]->id == $resposta_selecionada? "selected" : "" ;?>" />
               <label for="resposta_1">1)</label>
               <?php echo $respostas[0]->descricao?>
             </p>
@@ -54,10 +57,11 @@
             </p>
             <div class="row">
                 <div class="col s12">
-                    <a class="waves-effect waves-light btn purple" href="<?php echo base_url('jogar/pergunta').$sequencia;?>">Anterior</a>
                     
+                    <?php if($sequencia > 1) : ?>
+                        <a class="waves-effect waves-light btn purple" href="<?php echo base_url('jogar/pergunta').'/'.($sequencia-1);?>">Anterior</a>
+                    <?php endif; ?>
                     <button class="btn waves-effect purple waves-light " type="submit" >Próximo</button>
-                    
                 </div>
             </div>    
         </form>

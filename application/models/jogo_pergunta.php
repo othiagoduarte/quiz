@@ -11,18 +11,14 @@ class Jogo_pergunta extends CI_Model {
 	public $data = "00-00-0000";
 	
 	private $nome_tabela = 'jogos_resposta';
-	private $sequencia = 1;
+
   	
 	public function __construct(){
 	   	parent::__construct();	
-	   	$this->load->model('pergunta','pergunta');
-	   	$this->load->model('resposta','resposta');
-	   	$this->load->model('jogo','jogo');
+
 	}
 	
-	public function set_sequencia($seq){
-	    $this->$sequencia = $seq;
-	}
+
 	
 	public function get_table(){
 		return $nome_tabela;																			#definir o nome da table onde os dados serão salvos
@@ -32,7 +28,7 @@ class Jogo_pergunta extends CI_Model {
 	    return $this->db->insert_id();	
 	}
 	
-	public function get_pergunta_sequencia($id_jogo ,$sequencia){
+	public function get_reposta_sequencia($id_jogo ,$sequencia){
 	    $this->conectarDB();
 	    $sequencia = $sequencia - 1;
 	    $sql = "SELECT * FROM jogos_resposta where id_jogo = $id_jogo ORDER BY id LIMIT $sequencia ,1";
